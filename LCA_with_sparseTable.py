@@ -17,7 +17,7 @@ while tmp <= N:
 
 depth = [0 for _ in range(N+1)]
 visited = [False for _ in range(N+1)]
-parent = [[0 for _ in range(N+1)] for _ in range(kmax+1)] # P[K][N] = P[K-1][P[K-1][N]]
+parent = [[0 for _ in range(N+1)] for _ in range(kmax)] # P[K][N] = P[K-1][P[K-1][N]]
 def BFS(x):
     queue = deque()
     queue.append(x)
@@ -32,7 +32,7 @@ def BFS(x):
                 parent[0][i] = now
 
 BFS(1)
-for k in range(1,kmax + 1):
+for k in range(1,kmax):
     for n in range(1,N+1):
         parent[k][n] = parent[k-1][parent[k-1][n]]
 
@@ -40,12 +40,12 @@ def LCA(a,b):
     if depth[a] > depth[b]:
         a,b = b,a
     
-    for k in range(kmax, -1, -1):
+    for k in range(kmax-1, -1, -1):
         if pow(2,k) <= depth[b] - depth[a]:
             if depth[a] <= depth[parent[k][b]]:
                 b = parent[k][b]
 
-    for k in range(kmax, -1, -1):
+    for k in range(kmax-1, -1, -1):
         if a == b:
             break
         if parent[k][a] != parent[k][b]:
