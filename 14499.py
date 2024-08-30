@@ -1,5 +1,5 @@
 # implementation, simulation
-from 삼성 SW 역량 테스트 기출 문제 / https://www.acmicpc.net/workbook/view/1152
+# from 삼성 SW 역량 테스트 기출 문제 / https://www.acmicpc.net/workbook/view/1152
 
 
 import sys
